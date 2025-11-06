@@ -10,6 +10,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "NCL-Gasdrifo";
   src: url("/fonts/NCL-Gasdrifo-Regular.woff2") format("woff2");
@@ -18,8 +19,15 @@
   font-display: swap;
 }
 
+/* 🌫️ Glass + Theme Variables */
 :root {
-  --glass-bg: rgba(255,255,255,0.06);
+  --glass-bg: rgba(255, 255, 255, 0.06);
+
+  /* 🌈 Unified readable text colors */
+  --text-main: #1e1b4b;      /* deep indigo for headings */
+  --text-subtle: #334155;    /* slate gray for body text */
+  --text-accent: #5b21b6;    /* violet accent */
+  --text-light: #f8fafc;     /* for dark or glassy backgrounds */
 }
 
 /* full-height */
@@ -27,41 +35,66 @@ html, body, #__next {
   height: 100%;
 }
 
+/* ✨ Body Styling */
 body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: #f8fafc;
+  color: var(--text-subtle);
   background-image:
-    radial-gradient(1000px 400px at 10% 10%, rgba(137,104,255,0.06), transparent 10%),
-    radial-gradient(800px 300px at 90% 80%, rgba(255,104,180,0.04), transparent 20%),
-    linear-gradient(135deg, rgba(225,230,255,0.65), rgba(245,230,245,0.6));
+    radial-gradient(1000px 400px at 10% 10%, rgba(137, 104, 255, 0.06), transparent 10%),
+    radial-gradient(800px 300px at 90% 80%, rgba(255, 104, 180, 0.04), transparent 20%),
+    linear-gradient(135deg, rgba(225, 230, 255, 0.65), rgba(245, 230, 245, 0.6));
   background-blend-mode: overlay, overlay, normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* particle grain */
+/* 🌌 Particle grain texture */
 body::after {
   content: "";
   pointer-events: none;
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(#ffffff 0.4px, rgba(255,255,255,0) 0.6px);
+  background-image: radial-gradient(#ffffff 0.4px, rgba(255, 255, 255, 0) 0.6px);
   background-size: 4px 4px;
   opacity: 0.03;
   mix-blend-mode: overlay;
 }
 
-/* glass card base */
+/* 🪞 Glass card base */
 .glass {
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
   backdrop-filter: blur(8px) saturate(120%);
   -webkit-backdrop-filter: blur(8px) saturate(120%);
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 6px 30px rgba(72,56,158,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 6px 30px rgba(72, 56, 158, 0.06);
 }
 
-/* handwriting heading class */
+/* ✍️ Handwriting heading class */
 .h1-hand {
   font-family: "OceanTrace", "NCL-Gasdrifo", cursive;
   letter-spacing: 0.02em;
+  color: var(--text-main);
+}
+
+/* 🖋️ Global Typography */
+h1, h2, h3, h4 {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+p, span, li, label {
+  color: var(--text-subtle);
+}
+
+a {
+  color: var(--text-accent);
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #7c3aed;
+}
+
+/* 🌤️ Light text utility for dark or glassy sections */
+.text-on-glass {
+  color: var(--text-light);
 }
